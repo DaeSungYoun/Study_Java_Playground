@@ -32,4 +32,31 @@ public class CoffeeRepository {
         log.info("(바리스타) 커피 만들기 완료");
         return coffeeMap.get(name).getPrice();
     }
+
+    public Coffee makeCoffee(String name) {
+        log.info("(바리스타) {} 커피 만들기 시작", name);
+
+        if ("latte".equals(name)) {
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } else if ("mocha".equals(name)) {
+            try {
+                Thread.sleep(6000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } else if ("americano".equals(name)) {
+            try {
+                Thread.sleep(8000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        log.info("(바리스타) {} 커피 만들기 완료", name);
+        return coffeeMap.get(name);
+    }
 }

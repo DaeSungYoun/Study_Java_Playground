@@ -1,5 +1,6 @@
 package com.ydskingdom.completableFuture.service;
 
+import com.ydskingdom.completableFuture.domain.Coffee;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.PATH;
 
 @Slf4j
 @SpringBootTest
@@ -21,6 +23,53 @@ class CoffeeComponentTest {
 
     @Autowired
     CoffeeComponent coffeeComponent;
+
+
+    @DisplayName("runAsync()")
+    @Test
+    void runAsync_test() {
+        log.info("runAsync Call Start");
+        CompletableFuture<Void> future = coffeeComponent.runAsync();
+        log.info("runAsync Call End");
+
+        future.join();
+    }
+
+    @DisplayName("supplyAsync_콜백")
+    @Test
+    void supplyAsync_thenApply_test() {
+        CompletableFuture future = CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return "Hello6";
+        });
+
+        CompletableFuture future1 = future.thenApply(s -> s + " World1");
+
+        CompletableFuture future2 = future.thenAccept(s -> {
+            System.out.println(s + " World2");
+        });
+
+        CompletableFuture future3 = future.thenRun(() -> {
+            System.out.println("Computation finished.");
+        });
+
+        CompletableFuture future4 = future
+                .thenApply(v -> v + "Hi")
+                .thenApply(v -> v + "Hello");
+
+        try {
+            log.info("future1 : {}", future1.get()); //thenApply()는 반환값이 있어서 로그에 값이 찍힘
+            log.info("future2 : {}", future2.get()); //thenAeccept()는 반환값이 없어서 로그에 값이 안찍힘
+            log.info("future3 : {}", future3.get()); //thenRun()은 반환값이 없어서 로그에 값이 안찍
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @DisplayName("동기/블록킹")
     @Test

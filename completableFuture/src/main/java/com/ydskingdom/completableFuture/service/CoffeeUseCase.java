@@ -1,5 +1,8 @@
 package com.ydskingdom.completableFuture.service;
 
+import com.ydskingdom.completableFuture.domain.Coffee;
+
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
 public interface CoffeeUseCase {
@@ -9,5 +12,6 @@ public interface CoffeeUseCase {
 
     Future<Integer> getDiscountPriceAsync(Integer price);
 
+    CompletableFuture<Coffee> makeCoffee_SupplyAsync(String name);
 
 }

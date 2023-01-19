@@ -13,6 +13,11 @@
     
     그래서 Java 8에서는 이러한 문제를 모두 해결한 CompletableFuture가 등장하게 되었다
 
+## 기타 정보
+- 원하는 Executor(ThreadPool)를 사용해서 실행할 수도 있지만, 기본은 ForkJoinPool.commonPool()을 사용
+- CompletableFuture.join()메소드는 get()메소드와 비슷한데, join()메소드는 Future가 일반적으로 complete 되지 않으면 unchecked exception을 발생시킨다.
+
+
 ## CompletableFuture 기능
 - ## 비동기 작업 실행
   - ### runAsync()

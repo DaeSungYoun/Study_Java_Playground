@@ -1,16 +1,13 @@
 package com.ydskingdom.completableFuture.service;
 
+import com.ydskingdom.completableFuture.domain.Coffee;
 import com.ydskingdom.completableFuture.repository.CoffeeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 @Slf4j
 @Component
@@ -21,6 +18,20 @@ public class CoffeeComponent implements CoffeeUseCase {
 
 //    Executor executor = Executors.newFixedThreadPool(10);
 
+    public CompletableFuture<Void> runAsync(){
+        log.info("RunAsync Start !");
+        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            log.info("RunAsync End!");
+        });
+
+        return future;
+    }
 
     @Override
     public int getPrice(String name) {
@@ -50,5 +61,10 @@ public class CoffeeComponent implements CoffeeUseCase {
                     return (int) (price * 0.9);
                 }, threadPoolTaskExecutor
         );
+    }
+
+    @Override
+    public CompletableFuture<Coffee> makeCoffee_SupplyAsync(String name) {
+        return CompletableFuture.supplyAsync(() -> coffeeRepository.makeCoffee(name));
     }
 }
