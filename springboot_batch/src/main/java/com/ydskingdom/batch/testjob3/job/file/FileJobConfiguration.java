@@ -32,7 +32,7 @@ public class FileJobConfiguration {
 
     @Bean
     public Job fileJob() {
-        System.out.println("job");
+        System.out.println("fileJob bean create");
         return jobBuilderFactory.get("fileJob")
                 .start(fileStep1())
                 .build();
@@ -40,7 +40,7 @@ public class FileJobConfiguration {
 
     @Bean
     public Step fileStep1() {
-        System.out.println("fileStep");
+        System.out.println("fileStep1 bean create");
         return stepBuilderFactory.get("fileStep1")
                 .<ProductVO, Product>chunk(10)
                 .reader(fileItemReader(null))
@@ -52,7 +52,7 @@ public class FileJobConfiguration {
     @Bean
     @StepScope
     public FlatFileItemReader<ProductVO> fileItemReader(@Value("#{jobParameters['requestDate']}") String requestDate) {
-        System.out.println("fileItemReader");
+        System.out.println("fileItemReader bean create");
         return new FlatFileItemReaderBuilder<ProductVO>()
                 .name("flatFile")
                 .resource(new ClassPathResource("product_" + requestDate +".csv"))
@@ -66,13 +66,13 @@ public class FileJobConfiguration {
 
     @Bean
     public ItemProcessor<ProductVO, Product> fileItemProcessor() {
-        System.out.println("fileItemProcessor");
+        System.out.println("fileItemProcessor bean create");
         return new FileItemProcessor();
     }
 
     @Bean
     public JpaItemWriter<Product> fileItemWriter() {
-        System.out.println("fileItemWriter");
+        System.out.println("fileItemWriter bean create");
         return new JpaItemWriterBuilder<Product>()
                 .entityManagerFactory(entityManagerFactory)
                 .usePersist(true)

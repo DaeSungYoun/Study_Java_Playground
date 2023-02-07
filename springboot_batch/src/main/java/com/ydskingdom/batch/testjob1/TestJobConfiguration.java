@@ -17,22 +17,20 @@ public class TestJobConfiguration {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
 
-
     @Bean
-    public Job simpleJob1() {
-        log.info("========== START simpleJob");
-
-        return jobBuilderFactory.get("testJob")	//Batch Job을 생성하고 builder를 통해 이름 지정
+    public Job testJob1() {
+        System.out.println("testJob1 bean create");
+        return jobBuilderFactory.get("testJob1")	//Batch Job을 생성하고 builder를 통해 이름 지정
                 .incrementer(new RunIdIncrementer())
-                .start(simpleStep1())				//execute 할 step or sequence of steps
+                .start(testJob1_Step())				//execute 할 step or sequence of steps
                 .build();
     };
 
 
 
     @Bean
-    public Step simpleStep1() {
-        return stepBuilderFactory.get("simpleStep1")			//Batch Step을 생성하고 builder를 통해 이름 지정
+    public Step testJob1_Step() {
+        return stepBuilderFactory.get("testJob1_Step bean create")			//Batch Step을 생성하고 builder를 통해 이름 지정
                 .tasklet((contribution, chunkContext) -> {		//Step 안에서 수행될 기능을 명시
                     for(int i = 0; i < 100 ; i ++) {			//	- Tasklet은 Step 안에서 단일로 수행될 커스텀 기능 선언
                         log.info(">>>>>  "+(i+1)+"  <<<<<");

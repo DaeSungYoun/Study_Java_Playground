@@ -17,11 +17,11 @@ public class TestJob2Configuration {
     private final StepBuilderFactory stepBuilderFactory;
 
     @Bean
-    public Job job() {
-        System.out.println("Job");
+    public Job testJob2() {
+        System.out.println("testJob2 bean create");
         return jobBuilderFactory.get("testJob2")
-                .start(step1())
-                .next(step2())
+                .start(testJob2_Step1())
+                .next(testJob2_Step2())
                 .listener(new JobExecutionListener() {
                     @Override
                     public void beforeJob(JobExecution jobExecution) {
@@ -37,13 +37,13 @@ public class TestJob2Configuration {
     }
 
     @Bean
-    public Step step1() {
-        System.out.println("step1");
-        return stepBuilderFactory.get("testStep1")
+    public Step testJob2_Step1() {
+        System.out.println("testJob2_Step1 bean create");
+        return stepBuilderFactory.get("testJob2_Step1")
                 .tasklet(new Tasklet() {
                     @Override
                     public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
-                        System.out.println("hi");
+                        System.out.println("testJob2_step1 execute");
                         return RepeatStatus.FINISHED;
                     }
                 })
@@ -51,13 +51,13 @@ public class TestJob2Configuration {
     }
 
     @Bean
-    public Step step2() {
-        System.out.println("step2");
-        return stepBuilderFactory.get("testStep2")
+    public Step testJob2_Step2() {
+        System.out.println("testJob2_Step2 bean create");
+        return stepBuilderFactory.get("testJob2_Step2")
                 .tasklet(new Tasklet() {
                     @Override
                     public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
-                        System.out.println("hello");
+                        System.out.println("testJob2_Step2 execute");
                         return RepeatStatus.FINISHED;
                     }
                 })
