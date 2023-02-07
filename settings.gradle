@@ -1,4 +1,4 @@
 rootProject.name = 'Study_Java_Playground'
 include 'completableFuture'
-include 'completableFuture'
+include 'springboot_batch'
 
