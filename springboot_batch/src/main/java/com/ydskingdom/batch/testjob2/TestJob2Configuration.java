@@ -1,4 +1,4 @@
-package com.ydskingdom.batch;
+package com.ydskingdom.batch.testjob2;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.*;
