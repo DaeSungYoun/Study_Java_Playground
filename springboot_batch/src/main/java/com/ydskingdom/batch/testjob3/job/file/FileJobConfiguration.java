@@ -9,6 +9,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.batch.item.database.builder.JpaItemWriterBuilder;
@@ -35,6 +36,7 @@ public class FileJobConfiguration {
         System.out.println("fileJob bean create");
         return jobBuilderFactory.get("fileJob")
                 .start(fileStep1())
+                .incrementer(new RunIdIncrementer())
                 .build();
     }
 
