@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -28,6 +29,33 @@ public class CompletableFutureTest01 {
         });
 
         future.join();
+    }
+
+    @DisplayName("supplyAsync()_multi")
+    @Test
+    void test_case_0111() {
+//        ExecutorService executorService = Executors.newCachedThreadPool();
+        ExecutorService executorService = Executors.newFixedThreadPool(100);
+//        ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+//        System.out.println(Runtime.getRuntime().availableProcessors());
+
+        List<Integer> integerList = new ArrayList<>();
+        for (int i = 1; i <= 1000; i++) {
+            integerList.add(i);
+        }
+
+        List<CompletableFuture<Integer>> collect = integerList.stream().map(i -> CompletableFuture.supplyAsync(() -> {
+                    System.out.println(Thread.currentThread().getName() + " : " + i);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return i;
+                }, executorService))
+                .collect(Collectors.toList());
+
+        collect.stream().map(CompletableFuture::join).collect(Collectors.toList());
     }
 
     @DisplayName("supplyAsync()_thenApply()")
