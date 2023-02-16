@@ -2,4 +2,5 @@ rootProject.name = 'Study_Java_Playground'
 include 'completableFuture'
 include 'springboot_batch'
 include 'thread'
+include 'redis'
 
