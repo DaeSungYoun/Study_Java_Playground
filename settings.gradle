@@ -3,4 +3,5 @@ include 'completableFuture'
 include 'springboot_batch'
 include 'thread'
 include 'redis'
+include 'error'
 
