@@ -2,6 +2,8 @@ server:
   error:
     include-exception: true # 오류 응답에 Exception 내용을 포함할지 여부 (true, false)
     include-stacktrace: always # 오류 응답에 stacktrace 내용을 포함할지 여부(ALWAYS, NEVER, ON_TRACE_PARAM)
+    server.error.include-message: always
+    server.error.include-binding-errors: always
     path: /aerror
 #    whitelabel:
 #      enabled: false

@@ -1,8 +1,8 @@
-package com.ydskingdom.error.controller;
+package com.ydskingdom.error.error.controller;
 
-import com.ydskingdom.error.exception.BadGatewayException;
-import com.ydskingdom.error.exception.ForbiddenException;
-import com.ydskingdom.error.exception.PageNotFoundException;
+import com.ydskingdom.error.error.exception.BadGatewayException;
+import com.ydskingdom.error.error.exception.ForbiddenException;
+import com.ydskingdom.error.error.exception.PageNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
