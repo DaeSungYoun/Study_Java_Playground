@@ -35,12 +35,12 @@ public class CompletableFutureTest01 {
     @Test
     void test_case_0111() {
 //        ExecutorService executorService = Executors.newCachedThreadPool();
-        ExecutorService executorService = Executors.newFixedThreadPool(100);
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
 //        ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 //        System.out.println(Runtime.getRuntime().availableProcessors());
 
         List<Integer> integerList = new ArrayList<>();
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 100; i++) {
             integerList.add(i);
         }
 
@@ -55,7 +55,8 @@ public class CompletableFutureTest01 {
                 }, executorService))
                 .collect(Collectors.toList());
 
-        collect.stream().map(CompletableFuture::join).collect(Collectors.toList());
+        List<Integer> collect1 = collect.stream().map(CompletableFuture::join).collect(Collectors.toList());
+        System.out.println(collect1);
     }
 
     @DisplayName("supplyAsync()_thenApply()")
