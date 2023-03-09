@@ -15,7 +15,6 @@ dependencies {
     implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
-    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'

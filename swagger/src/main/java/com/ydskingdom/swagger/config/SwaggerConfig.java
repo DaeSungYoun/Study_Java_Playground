@@ -21,7 +21,6 @@ public class SwaggerConfig {
                 .additionalModels(
                         typeResolver.resolve(Test02ResponseDto.class),
                         typeResolver.resolve(Test03ResponseDto.class)
-
                 )
                 .select()
                 .apis(RequestHandlerSelectors.any())

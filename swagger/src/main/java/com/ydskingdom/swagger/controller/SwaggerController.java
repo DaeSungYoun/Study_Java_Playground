@@ -1,7 +1,6 @@
 package com.ydskingdom.swagger.controller;
 
 import com.ydskingdom.swagger.dto.RestResponse;
-import com.ydskingdom.swagger.dto.Test01RequestDto;
 import com.ydskingdom.swagger.dto.Test02ResponseDto;
 import com.ydskingdom.swagger.dto.Test03ResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,7 +11,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,27 +45,4 @@ public class SwaggerController {
                 .build();
         return new ResponseEntity<>(new RestResponse<>(1, "asdf", test03ResponseDto), HttpStatus.OK);
     }
-
-
-
-//
-//    @GetMapping("/test01")
-//    public Test02ResponseDto test01(@RequestBody Test01RequestDto test01RequestDto) {
-//        return Test02ResponseDto.builder()
-//                .aaaa("aaa")
-//                .bbbb("bbb")
-//                .cccc(111)
-//                .dddd(false)
-//                .eeee(100L)
-//                .build();
-//    }
-//
-//    @GetMapping("/test033")
-//    public Test03ResponseDto test033() {
-//        return Test03ResponseDto.builder()
-//                .a("aaa")
-//                .b("bbb")
-//                .c(111)
-//                .build();
-//    }
 }
