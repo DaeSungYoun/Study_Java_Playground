@@ -9,10 +9,10 @@ spring:
       names: ${job.name:NONE}
 #      enabled: false
     jdbc:
-      initialize-schema: never
+      initialize-schema: always
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     show-sql: true
     properties:
