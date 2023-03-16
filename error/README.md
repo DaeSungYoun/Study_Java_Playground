@@ -6,7 +6,7 @@
       -> 컨트럴로(예외발생) -> 인터셉터 -> 서블릿(디스패처 서블릿) -> 필터 -> WAS(톰캣)
       -> WAS(톰캣) -> 필터 -> 서블릿(디스패처 서블릿) -> 인터셉터 -> 컨트롤러(BasicErrorController)
       ```
-    - 
+    
   - ## Whitelabel Error page
     - spring boot에서 Exception 발생 시 Whitelabel Error page를 기본으로 노출 시킨다
     - Whitelabel Error page는 properties 파일에서 설정으로 관리 할 수 있다
