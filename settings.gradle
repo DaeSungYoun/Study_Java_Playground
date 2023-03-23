@@ -7,4 +7,6 @@ include 'error'
 include 'swagger'
 include 'jpa_N+1'
 include 'webflux'
+include 'json'
+include 'bean'
 
