@@ -9,4 +9,5 @@ include 'jpa_N+1'
 include 'webflux'
 include 'json'
 include 'bean'
+include 'functional-interface'
 
