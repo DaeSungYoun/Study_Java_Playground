@@ -40,7 +40,7 @@ public class SkipStepConfiguration {
     }
 
     private ItemReader<String> customReader() {
-        return new ItemReader<>() {
+        return new ItemReader<String>() {
             int i = 0;
 
             @Override
