@@ -11,4 +11,5 @@ include 'm-functional-interface'
 include 'm-json-converter'
 include 'm-spring-bean'
 include 'm-git'
+include 'm-optional'
 
