@@ -57,4 +57,22 @@ public class TaskExecutorConfig {
 
         return taskExecutor;
     }
+
+    @Bean(name = "taskExecutor1")
+    public ThreadPoolTaskExecutor taskExecutor1() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(5);
+        executor.setMaxPoolSize(10);
+        executor.setQueueCapacity(25);
+        return executor;
+    }
+
+    @Bean(name = "taskExecutor2")
+    public ThreadPoolTaskExecutor taskExecutor2() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(2);
+        executor.setMaxPoolSize(5);
+        executor.setQueueCapacity(10);
+        return executor;
+    }
 }
