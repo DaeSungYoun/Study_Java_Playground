@@ -12,4 +12,5 @@ include 'm-json-converter'
 include 'm-spring-bean'
 include 'm-git'
 include 'm-optional'
+include 'm-spring-batch-multiJob'
 
