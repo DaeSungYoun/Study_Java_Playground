@@ -14,6 +14,7 @@ repositories {
 dependencies {
     implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
     implementation 'org.springframework.boot:spring-boot-starter-batch'
+    implementation 'org.springframework.boot:spring-batch-integration'
     implementation 'mysql:mysql-connector-java'
     implementation 'org.projectlombok:lombok'
     implementation 'mysql:mysql-connector-java'
