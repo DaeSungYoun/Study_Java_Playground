@@ -3,7 +3,7 @@ spring:
     job:
       names: ${job.name:NONE}
     jdbc:
-      initialize-schema: always
+      initialize-schema: never
       isolation-level-for-create: default
   datasource:
     url: jdbc:mysql://localhost:3306/springbatch?useUnicode=true&characterEncoding=utf8
@@ -21,4 +21,4 @@ spring:
 logging:
   pattern:
     console: "[%-20(%cyan(%date{HH:mm:ss.SSS})] [%thread]) %highlight(%-5level) %magenta(%marker|%logger{36}): %msg%n%rEx" # console pattern
-    level: info
+    level: DEBUG
