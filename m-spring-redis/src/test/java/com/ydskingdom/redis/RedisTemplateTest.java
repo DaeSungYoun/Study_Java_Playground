@@ -29,6 +29,7 @@ public class RedisTemplateTest {
         redisTemplate.opsForSet();
         redisTemplate.opsForZSet();
         redisTemplate.opsForHash();
+        redisTemplate.hasKey("");
         redisTemplate.delete("");
         redisTemplate.delete(Lists.newArrayList("1", "2"));
         redisTemplate.countExistingKeys(Lists.newArrayList("1", "2"));
@@ -54,5 +55,21 @@ public class RedisTemplateTest {
 
         System.out.println("countExistingKeys : " + countExistingKeys);
         assertThat(countExistingKeys).isEqualTo(1);
+    }
+
+    @Test
+    void 키_유무_확인_테스트2() {
+        // given
+        String key = "stringKey";
+        redisTemplate.delete(key);
+        ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+
+        // when
+        valueOperations.set(key, "hello");
+
+        Boolean hasKey = redisTemplate.hasKey(key);
+
+        // then
+        assertThat(hasKey).isEqualTo(true);
     }
 }
