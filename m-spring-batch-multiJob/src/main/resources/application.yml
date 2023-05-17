@@ -3,12 +3,12 @@ spring:
     job:
       names: ${job.name:NONE}
     jdbc:
-      initialize-schema: never
+      initialize-schema: always
       isolation-level-for-create: default
   datasource:
-    url: jdbc:mysql://localhost:3306/springbatch?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/batchlog?useUnicode=true&characterEncoding=utf8
     username: root
-    password: dbseotjd1
+    password: dbseotjd1!
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
