@@ -11,7 +11,7 @@
 
         ```text
         아래 내용을 하단에 추가
-        경로 설정 시 마지막에 "/" 필수
+        경로 설정 시 마지막에 "/" 필수, 경로 대소문자 맞춰야함
 
         [includeIf "gitdir:~/Documents/personal/"]
         path = .gitconfig-personal
